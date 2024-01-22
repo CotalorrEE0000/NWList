@@ -1,4 +1,10 @@
-with open("C:/Users/fctjg/Desktop/New Text Document.txt", 'r') as file:
+from os import path
+
+current_path = path.abspath(__file__)
+began_direction = path.join(path.dirname(path.dirname(current_path)), 'New Text Document.txt')
+end_direction = path.join(path.dirname(path.dirname(current_path)), "Abstracted Document.txt")
+
+with open(began_direction, 'r') as file:
     paragraph = file.read()
 
 
@@ -35,7 +41,7 @@ new_char = [ch(content_list[i].lower())for i in range(p + 1, len(content_list))]
 new_char2 = [item for item in new_char if item not in ori_char]
 ci = 0
 
-with open("C:/Users/fctjg/Desktop/Abstracted Document.txt", 'w') as file2:
+with open(end_direction, 'w') as file2:
     file2.write("The new word list:" + '\n')
     for item in new_char2:
         ci += 1
